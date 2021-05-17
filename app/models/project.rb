@@ -10,9 +10,9 @@ class Project < ApplicationRecord
   validates :address, presence: true
   validates :price, presence: true
   validates :area, presence: true
-  validates :subsidy, presence: true
+  validates :subsidy, inclusion: { in: [true, false]}
   validates :restroom, presence: true
-  validates :parking, presence: true
+  validates :parking, inclusion: { in: [true, false]}
   validates :list_emails, presence: true
   validates :user_id, presence: true
 end

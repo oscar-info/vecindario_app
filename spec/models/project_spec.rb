@@ -10,9 +10,7 @@ RSpec.describe Project, type: :model do
       should validate_presence_of(:address)
       should validate_presence_of(:price)
       should validate_presence_of(:area)
-      should validate_presence_of(:subsidy)
       should validate_presence_of(:restroom)
-      should validate_presence_of(:parking)
       should validate_presence_of(:list_emails)
       should validate_presence_of(:user_id)
     end

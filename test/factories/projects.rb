@@ -1,15 +1,15 @@
 FactoryBot.define do
   factory :project do
-    name_project { Faker::Mountain.name }
+    name_project { Faker::Lorem.word }
     type_project { "Apartment" }
     city { "Cali" }
     address { Faker::Address.street_address }
     price { 1 }
     area { 1 }
     subsidy { Faker::Boolean.boolean }
-    restroom { Faker::Number.between(from: 1, to: 3) }
+    restroom { 2 }
     parking { Faker::Boolean.boolean }
-    list_emails { "ListOfEmails" }
+    list_emails { ["ListOfEmails"] }
     user
   end
 end
