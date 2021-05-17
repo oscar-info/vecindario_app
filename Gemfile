@@ -32,7 +32,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Emplea TDD para escribrir pruebas en ruby
-  gem 'rspec-rails', '~>3.5'
+  gem 'rspec-rails', '~>4.0'
 end
 
 group :development do
