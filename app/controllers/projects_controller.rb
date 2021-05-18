@@ -36,7 +36,7 @@ class ProjectsController < ApplicationController
     private
 
     def create_params
-        params.require(:project).permit(:name_project, :type_project, :city, :address, :price, :area, :subsidy, :restroom, :parking, :list_emails, :user_id)
+        params.require(:project).permit(:name_project, :type_project, :city, :address, :price, :area, :subsidy, :restroom, :parking, {list_emails: []}, :user_id)
     end
 
     def update_params
