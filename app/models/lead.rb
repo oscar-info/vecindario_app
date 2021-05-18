@@ -6,4 +6,5 @@ class Lead < ApplicationRecord
   validates :email, presence: true
   validates :phone, presence: true
   validates :creation_date, presence: true
+  validates :project_id, presence: true
 end

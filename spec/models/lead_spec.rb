@@ -9,6 +9,7 @@ RSpec.describe Lead, type: :model do
       should validate_presence_of(:phone)
       should validate_presence_of(:email)
       should validate_presence_of(:creation_date)
+      should validate_presence_of(:project_id)
     end
   end
 end
