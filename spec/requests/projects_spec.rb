@@ -4,12 +4,25 @@ require "rails_helper"
 RSpec.describe "Projects", type: :request do
 
     describe "GET /projects" do
-        before { get '/projects' }
-
         it "should return OK" do
+            get '/projects'
             playload = JSON.parse(response.body)
             expect(playload).to be_empty
             expect(response).to have_http_status(200)
+        end
+
+        describe "Search" do
+            let!(:project1) { create(:project, name_project: 'proyecto 1') }
+            let!(:project2) { create(:project, name_project: 'proyecto 2') }
+            let!(:project3) { create(:project, name_project: 'project 3') }
+
+            it "should filter projects" do
+                get "/projects?search=proyecto"
+                payload = JSON.parse(response.body)
+                expect(payload).to_not be_empty
+                expect(payload.size).to eq(2)
+                expect(payload.map { |p| p["id"] }.sort).to eq([project1.id, project2.id].sort)
+            end
         end
     end
 
