@@ -11,6 +11,9 @@ class ProjectsController < ApplicationController
     #metodo para listar los proyectos GET /project
     def index
         @projects = Project.all
+        if !params[:search].nil? && params[:search].present?
+            @projects = ProjectsSearchService.search(@projects, params[:search])
+        end
         render json: @projects, status: :ok
     end
 
