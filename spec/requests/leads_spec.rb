@@ -2,8 +2,8 @@ require "rails_helper"
 
 RSpec.describe "Leads", type: :request do
 
-    describe "GET /lead" do
-        before { get '/lead' }
+    describe "GET /leads" do
+        before { get '/leads' }
 
         it "should return OK" do
             playload = JSON.parse(response.body)
@@ -16,18 +16,18 @@ RSpec.describe "Leads", type: :request do
         let!(:leads) { create_list(:lead, 5) }
 
         it "should return all the leads" do
-            get "/lead"
+            get "/leads"
             playload = JSON.parse(response.body)
             expect(playload.size).to eq(leads.size)
             expect(response).to have_http_status(200)
         end
     end
 
-    describe "GET /lead/{id}" do
+    describe "GET /leads/{id}" do
         let!(:lead) { create(:lead) }
 
         it "should return a lead" do
-            get "/lead/#{lead.id}"
+            get "/leads/#{lead.id}"
             playload = JSON.parse(response.body)
             expect(playload).to_not be_empty
             expect(playload["id"]).to eq(lead.id)
