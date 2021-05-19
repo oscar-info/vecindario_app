@@ -14,7 +14,7 @@ class ProjectsController < ApplicationController
         if !params[:search].nil? && params[:search].present?
             @projects = ProjectsSearchService.search(@projects, params[:search])
         end
-        render json: @projects, status: :ok
+        render json: @projects.includes(:user, :leads), status: :ok
     end
 
     #mostrar el detalle de un proyecto GET /project/{id}
