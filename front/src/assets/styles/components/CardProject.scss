@@ -1,0 +1,75 @@
+@import '../Var.scss';
+
+.container__card--project {
+    padding: 2rem 1rem;
+    border: 0.5px solid $color-black;
+}
+
+.card__project--header{
+    .name_project{
+        font-size: 1.8rem;
+        color: $color-black;
+        font-weight: bold;
+    }
+
+    .type_project{
+        color: $color-grey;
+        font-size: 1.4rem;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+}
+
+.header--ubication{
+    display: flex;
+    font-size: 1.4rem;
+    font-weight: 500;
+
+    .city {
+        color: $color-primary;
+    }
+
+    .address {
+        color: $color-black;
+    }
+}
+
+.card__project--body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h2 {
+        color: $color-primary;
+    }
+
+    .price {
+        color: $color-black;
+        font-size: 1.8rem;
+        font-weight: bold;
+    }
+
+    .subsidy {
+        font-weight: bold;
+        margin: 1rem 0;
+    }
+}
+
+.body--aminities {
+    margin: 2rem 0;
+    width: 70%;
+    display: flex;
+    align-content: center;
+    justify-content: space-evenly;
+    text-align: center;
+}
+
+.btn__lead {
+    border: none;
+    background-color: $color-primary;
+    color: $color-black;
+    font-weight: bold;
+    font-size: 1.4rem;
+    border-radius: 2.7rem;
+    padding: 1rem 2rem;
+}
