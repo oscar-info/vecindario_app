@@ -1,0 +1,16 @@
+@import "../Var.scss";
+
+.home {
+    display: flex;
+    flex-direction: column;
+}
+
+.container__projects {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 95vw;
+    min-height: 80vh;
+    margin: 2rem auto;
+}
