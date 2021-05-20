@@ -19,8 +19,10 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
+# Use Json Web Token (JWT) for token based authentication
+gem 'jwt'
 # Use Active Model has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
@@ -33,6 +35,10 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Emplea TDD para escribrir pruebas en ruby
   gem 'rspec-rails', '~>4.0'
+  # Nos ayuda a generar datos de fake para pruebas
+  gem 'faker', '~> 1.9'
+  # Nos permite crear modelos preconfigurados con informacion de prueba
+  gem 'factory_bot_rails', '~> 4.0'
 end
 
 group :development do
@@ -47,12 +53,8 @@ group :development do
 end
 
 group :test do
-  # Nos permite crear modelos preconfigurados con informacion de prueba
-  gem 'factory_bot_rails', '~> 4.0'
   # Nos ayuda a simplificar el codigo que escribimos en las pruebas
   gem 'shoulda-matchers', '~> 3.1'
-  # Nos ayuda a generar datos de fake para pruebas
-  gem 'faker', '~> 1.9'
   # Se usa para eleminar los datos generados en una prueba al terminar la misma
   gem 'database_cleaner', '~> 1.7'
 end

@@ -4,8 +4,8 @@ FactoryBot.define do
     type_project { "Apartment" }
     city { "Cali" }
     address { Faker::Address.street_address }
-    price { 1 }
-    area { 1 }
+    price { 234352 }
+    area { 50 }
     subsidy { Faker::Boolean.boolean }
     restroom { 2 }
     parking { Faker::Boolean.boolean }
