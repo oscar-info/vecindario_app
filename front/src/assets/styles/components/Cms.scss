@@ -1,0 +1,13 @@
+@import "../Var.scss";
+
+.container__cms {
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: $color-black;
+    margin: 40vh auto;
+
+    span {
+        color: $color-primary;
+    }
+}

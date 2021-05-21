@@ -16,7 +16,7 @@ const CardProject = () => {
                     <p className="address">Carrera 45A # 79 sur - 134</p>
                 </div>
                 <div>
-                    <img src={imgProject} alt="Image project"/>
+                    <img src={imgProject} alt="project"/>
                 </div>
             </div>
             <div className="card__project--body">
@@ -24,15 +24,15 @@ const CardProject = () => {
                 <p className="price">209 millones*</p>
                 <div className="body--aminities">
                     <div className="body--aminities-area">
-                        <img src={imgArea}/>
+                        <img src={imgArea} alt="" />
                         <p className="area">63mt<sup>2</sup></p>
                     </div>
                     <div className="body--aminities-parking">
-                        <img src={imgParking}/>
+                        <img src={imgParking} alt="" />
                         <p className="parking">incluido</p>
                     </div>
                     <div className="body--aminities-restroom">
-                        <img src={imgRestroom}/>
+                        <img src={imgRestroom} alt="" />
                         <p className="restroom">2 baños</p>
                     </div>
                 </div>
