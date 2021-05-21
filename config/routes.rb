@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   get '/leads_by_project_id/:id', to: 'leads#showLeadsByProject'
 
   resources :users, only: [:index, :show, :create]
+  # resources :users, param: :_useremail
+  # post '/auth/login', to: 'authentication#login'
+  # get '/*a', to: 'application#not_found'
 
   resources :projects, only: [:index, :show, :create, :update]
 

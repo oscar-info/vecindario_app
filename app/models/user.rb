@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   has_many :projects
 
+  #has_secure_password
+
   validates :name, presence: true
   validates :last_name, presence: true
   validates :phone, presence: true
@@ -9,14 +11,5 @@ class User < ApplicationRecord
   validates :auth_token,
             length: { minimum: 8 },
             if: -> { new_record? || !password.nil? }
-
-  after_initialize :generate_auth_token
-
-  def generate_auth_token
-    # User.new
-    unless auth_token.present?
-      self.auth_token = TokenGenerationService.generate
-    end
-  end
 
 end
