@@ -4,7 +4,7 @@ FactoryBot.define do
     last_name { Faker::Name.last_name }
     email { Faker::Internet.email }
     phone { Faker::PhoneNumber.cell_phone }
-    creation_date { "2021-05-17" }
+    creation_date { "2021-05-20" }
     project
   end
 end

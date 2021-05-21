@@ -1,7 +1,5 @@
 class ProjectsController < ApplicationController
 
-    before_action :authenticate_user!, only: [:create, :update]
-
     rescue_from Exception do |e|
         render json: {error: e.message}, status: :internal_error
     end
@@ -22,15 +20,12 @@ class ProjectsController < ApplicationController
     #mostrar el detalle de un proyecto GET /project/{id}
     def show
         @project = Project.find(params[:id])
-        if(Current.user && @project.user_id == Current.user.id)
-            render json: @project, status: :ok
-        else
-            render json: {error: 'Not Found'}, status: :not_found
+        render json: @project, status: :ok
     end
 
     #creacion project POST /projects
     def create
-        @project = Current.user.projects.create!(create_params)
+        @project = Project.create!(create_params)
         render json: @project, status: :created
     end
 
@@ -41,26 +36,25 @@ class ProjectsController < ApplicationController
         render json: @project, status: :ok
     end
 
+    #########
+    #Muestra los proyectos asociados a un user id
+    def showProjectsByUserId
+        @project = Project.where(user_id: params[:id])
+
+        if @project.empty?
+            render json: {error: 'Not Found'}, status: :not_found
+        else
+            render json: @project, status: :ok
+        end
+    end
+
     private
 
     def create_params
-        params.require(:project).permit(:name_project, :type_project, :city, :address, :price, :area, :subsidy, :restroom, :parking, {list_emails: []})
+        params.require(:project).permit(:name_project, :type_project, :city, :address, :price, :area, :subsidy, :restroom, :parking, {list_emails: []}, :user_id)
     end
 
     def update_params
-        params.require(:project).permit(:name_project, :type_project, :city, :address, :price, :area, :subsidy, :restroom, :parking, :list_emails)
+        params.require(:project).permit(:name_project, :type_project, :city, :address, :price, :area, :subsidy, :restroom, :parking, {list_emails: []})
     end
-
-    def authenticate_user!
-        token_regex = /Bearer (\w+)/
-        headers = request.headers
-        if headers['Authorization'].present? && headers['Authorization'].match(token_regex)
-            token = headers['Authorization'].match(token_regex)[1]
-            if(Current.user = User.find_by_auth_token(token))
-                return
-            end
-        end
-        render json: {error: 'Unauthorized'}, status: :unauthorized
-    end
-end
 end

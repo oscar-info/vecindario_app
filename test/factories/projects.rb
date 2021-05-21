@@ -9,7 +9,7 @@ FactoryBot.define do
     subsidy { Faker::Boolean.boolean }
     restroom { 2 }
     parking { Faker::Boolean.boolean }
-    list_emails { ["ListOfEmails"] }
+    list_emails { ["oscar.info@vecindario.com", "racso1607@gmail.com"] }
     user
   end
 end

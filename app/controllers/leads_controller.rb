@@ -1,7 +1,6 @@
 class LeadsController < ApplicationController
 
     rescue_from Exception do |e|
-        log.error "#{e.message}"
         render json: {error: e.message}, status: :internal_error
     end
 
@@ -18,8 +17,14 @@ class LeadsController < ApplicationController
 
     #GET /leads/{id}
     def show
-        @lead = Lead.find(params[:id])
-        render json: @lead, status: :ok
+        # @lead = Lead.find(params[:id])
+        # render json: @lead, status: :ok
+        begin
+            @lead = Lead.find(params[:id])
+            render json: @lead, status: :ok
+        rescue ActiveRecord::RecordNotFound
+            render json: {error: 'Not Found'}, status: :not_found
+        end
     end
 
     #POST /leads
@@ -33,6 +38,18 @@ class LeadsController < ApplicationController
         @lead = Lead.find(params[:id])
         @lead.update!(update_params)
         render json: @lead, status: :ok
+    end
+
+    ##################
+    # Muestra los leads asociados a un proyecto
+    def showLeadsByProject
+        @leads = Lead.where(project_id: params[:id])
+
+        if @leads.empty?
+            render json: {error: 'Not Found'}, status: :not_found
+        else
+            render json: @leads, status: :ok
+        end
     end
 
     private

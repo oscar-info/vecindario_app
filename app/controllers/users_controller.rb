@@ -9,9 +9,14 @@ class UsersController < ApplicationController
         render json: @users, status: :ok
     end
 
-    # GET /users/{email}
+    # GET /users/{id}
     def show
-        render json: @user, status: :ok
+        begin
+            @user = User.find(params[:id])
+            render json: @user, status: :ok
+        rescue ActiveRecord::RecordNotFound
+            render json: {error: 'Not Found'}, status: :not_found
+        end
     end
 
     # POST /users
