@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-
+    before_action :authorize_resquest, except: :index
 
     rescue_from Exception do |e|
         render json: {error: e.message}, status: :internal_error
@@ -26,13 +26,18 @@ class ProjectsController < ApplicationController
 
     #creacion project POST /projects
     def create
-        @project = Project.create!(create_params)
+        #byebug
+        @project = Project.new(create_params)
+        @project.user_id = @current_user.id
+        @project.save
+        #@project = Project.create(name_project: "prueba", subsidy: true, parking: true, user_id: @current_user.id)
+        #byebug
         render json: @project, status: :created
     end
 
     #creacion project PUT /projects/{id}
     def update
-        @project = Current.user.projects.find(params[:id])
+        @project = Projects.find(params[:id])
         @project.update!(update_params)
         render json: @project, status: :ok
     end
@@ -52,7 +57,7 @@ class ProjectsController < ApplicationController
     private
 
     def create_params
-        params.require(:project).permit(:name_project, :type_project, :city, :address, :price, :area, :subsidy, :restroom, :parking, {list_emails: []}, :user_id)
+        params.require(:project).permit(:name_project, :type_project, :city, :address, :price, :area, :subsidy, :restroom, :parking, {list_emails: []})
     end
 
     def update_params

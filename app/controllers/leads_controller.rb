@@ -29,6 +29,7 @@ class LeadsController < ApplicationController
 
     #POST /leads
     def create
+        #byebug
         @lead = Lead.create!(create_params)
         render json: @lead, status: :created
     end
@@ -55,10 +56,10 @@ class LeadsController < ApplicationController
     private
 
     def create_params
-        params.require(:lead).permit(:name, :last_name, :email, :phone, :creation_date, :project_id)
+        params.require(:lead).permit(:name, :last_name, :email, :phone, :project_id)
     end
 
     def update_params
-        params.require(:lead).permit(:name, :last_name, :email, :phone, :creation_date)
+        params.require(:lead).permit(:name, :last_name, :email, :phone)
     end
 end
