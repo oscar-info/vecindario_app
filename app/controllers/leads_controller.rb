@@ -31,7 +31,16 @@ class LeadsController < ApplicationController
     def create
         #byebug
         @lead = Lead.create!(create_params)
-        render json: @lead, status: :created
+        if @lead.valid?
+            @project = Project.find(@lead.project_id)
+            emails = @project.list_emails
+            emails = emails.map(&:inspect).join(", ")
+            name_project = @project.name_project
+            LeadReportMailer.lead_report(@lead, emails, name_project).deliver_now
+            render json: @lead, status: :created
+        else
+            render json: { errors: 'Bad request' }, status: :bad_request
+        end
     end
 
     #PUT /leads/{id}
