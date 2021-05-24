@@ -29,7 +29,6 @@ class LeadsController < ApplicationController
 
     #POST /leads
     def create
-        #byebug
         @lead = Lead.create!(create_params)
         if @lead.valid?
             @project = Project.find(@lead.project_id)
