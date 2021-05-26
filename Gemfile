@@ -19,8 +19,10 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
+# Use Json Web Token (JWT) for token based authentication
+gem 'jwt'
 # Use Active Model has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
@@ -31,6 +33,12 @@ gem 'bootsnap', '>= 1.4.4', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  # Emplea TDD para escribrir pruebas en ruby
+  gem 'rspec-rails', '~>4.0'
+  # Nos ayuda a generar datos de fake para pruebas
+  gem 'faker', '~> 1.9'
+  # Nos permite crear modelos preconfigurados con informacion de prueba
+  gem 'factory_bot_rails', '~> 4.0'
 end
 
 group :development do
@@ -42,6 +50,13 @@ group :development do
   gem 'listen', '~> 3.3'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+end
+
+group :test do
+  # Nos ayuda a simplificar el codigo que escribimos en las pruebas
+  gem 'shoulda-matchers', '~> 3.1'
+  # Se usa para eleminar los datos generados en una prueba al terminar la misma
+  gem 'database_cleaner', '~> 1.7'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
