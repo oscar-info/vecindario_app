@@ -39,6 +39,8 @@ group :development, :test do
   gem 'faker', '~> 1.9'
   # Nos permite crear modelos preconfigurados con informacion de prueba
   gem 'factory_bot_rails', '~> 4.0'
+  # solucionar problema de CORS
+  gem 'rack-cors', '~> 0.4.0'
 end
 
 group :development do
