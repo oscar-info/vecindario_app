@@ -1,13 +1,5 @@
 class ProjectsController < ApplicationController
-    before_action :authorize_resquest, except: :index
-
-    rescue_from Exception do |e|
-        render json: {error: e.message}, status: :internal_error
-    end
-
-    rescue_from ActiveRecord::RecordInvalid do |e|
-        render json: {error: e.message}, status: :unprocessable_entity
-    end
+    before_action :authorize_request, except: :index
 
     #metodo para listar los proyectos GET /project
     def index
