@@ -29,8 +29,8 @@ class ProjectsController < ApplicationController
 
     #creacion project PUT /projects/{id}
     def update
-        @project = Projects.find(params[:id])
-        @project.update!(update_params)
+        @project = Project.where(id: params[:id])
+        @project.update(update_params)
         render json: @project, status: :ok
     end
 

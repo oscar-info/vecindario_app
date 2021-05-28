@@ -41,7 +41,7 @@ module VecindarioApp
         resource(
           '*',
           headers: :any,
-          methods: [:get, :patch, :put, :delete, :post, :options]
+          methods: [:get, :patch, :put, :delete, :post, :options, :head]
           )
       end
     end
