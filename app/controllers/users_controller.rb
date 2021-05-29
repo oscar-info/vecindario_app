@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
     before_action :authorize_request, except: %i[create index] 
-    before_action :find_user, except: %i[create index]
+    before_action :find_user, except: %i[create index current_user]
 
     # GET /users
     def index
@@ -42,6 +42,20 @@ class UsersController < ApplicationController
     def destroy
         @user.destroy
     end
+
+    ######
+    def current_user
+        begin
+            header = request.headers['Authorization']
+            header = header.split(' ').last if header
+            @decode = JsonWebToken.decode(header)
+            @current_user = User.find(@decode[:user_id])
+            render json: @current_user, status: :ok
+        rescue ActiveRecord::RecordNotFound
+            render json: {error: 'Not Found'}, status: :not_found
+        end
+    end
+
 
     private
 

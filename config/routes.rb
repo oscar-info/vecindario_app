@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   get '/leads_by_project_id/:id', to: 'leads#showLeadsByProject'
 
+  get '/current_user', to: 'users#current_user'
+
   resources :projects, only: [:index, :show, :create, :update]
 
   #resources :users, only: [:index, :show, :create]
