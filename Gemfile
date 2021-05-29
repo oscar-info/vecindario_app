@@ -46,7 +46,7 @@ group :development, :test do
   # solucionar problema de CORS
   #gem 'rack-cors', '~> 0.4.0'
   # validates phone number
-  gem 'validates_phone_number', '~> 2.0', '>= 2.0.1'
+  #gem 'validates_phone_number', '~> 2.0', '>= 2.0.1'
 end
 
 group :development do

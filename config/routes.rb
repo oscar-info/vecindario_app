@@ -8,9 +8,9 @@ Rails.application.routes.draw do
 
   get '/current_user', to: 'users#current_user'
 
-  get '/projects', to: 'projects#index'
+  resources :projects, only: [:index, :show, :create, :update]
 
-  # resources :projects, only: [:index, :show, :create, :update]
+  resources :leads, only: [:index, :show, :create, :update]
 
   #resources :users, only: [:index, :show, :create]
   resources :users, param: :id
@@ -20,5 +20,4 @@ Rails.application.routes.draw do
 
   #resources :projects, only: [:index, :show, :create, :update]
 
-  resources :leads, only: [:index, :show, :create, :update]
 end
