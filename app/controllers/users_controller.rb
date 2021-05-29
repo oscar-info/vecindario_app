@@ -11,10 +11,8 @@ class UsersController < ApplicationController
 
     # GET /users/{id}
     def show
-
         begin
             @user = User.find(params[:id])
-            
             render json: @user, status: :ok
         rescue ActiveRecord::RecordNotFound
             render json: {error: 'Not Found'}, status: :not_found
@@ -24,7 +22,6 @@ class UsersController < ApplicationController
     # POST /users
     def create
         @user = User.new(user_params)
-        
         if @user.save
             render json: @user, status: :created
         else
