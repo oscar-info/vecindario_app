@@ -118,17 +118,17 @@ Rails.application.configure do
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
 
-  # config.action_mailer.delivery_method = :smtp
-  # host = 'localhost:3000' #replace with your own url
-  # config.action_mailer.default_url_options = { :host => 'localhost:3000', protocol: 'http' }
+  config.action_mailer.delivery_method = :smtp
+  host = 'app-vecindario.herokuapp.com' #replace with your own url
+  config.action_mailer.default_url_options = { :host => 'app-vecindario.herokuapp.com', protocol: 'http' }
 
-  # # SMTP settings for gmail
-  # config.action_mailer.smtp_settings = {
-  #   :address              => "smtp.gmail.com",
-  #   :port                 => 587,
-  #   :user_name            => "dairo.trabajos@gmail.com",
-  #   :password             => "ukio0099",
-  #   :authentication       => "plain",
-  #   :enable_starttls_auto => true
-  # }
+  # SMTP settings for gmail
+  config.action_mailer.smtp_settings = {
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :user_name            => ENV["GMAIL_USERNAME"],
+    :password             => ENV["GMAIL_PASSWORD"],
+    :authentication       => "plain",
+    :enable_starttls_auto => true
+  }
 end
