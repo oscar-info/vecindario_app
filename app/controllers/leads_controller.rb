@@ -27,7 +27,7 @@ class LeadsController < ApplicationController
             emails = @project.list_emails
             emails = emails.map(&:inspect).join(", ")
             name_project = @project.name_project
-            LeadReportMailer.lead_report(@lead, emails, name_project).deliver_now
+            LeadReportMailer.lead_report(@lead, emails, name_project).deliver_later
             render json: @lead, status: :created
         else
             render json: { errors: 'Bad request' }, status: :bad_request
