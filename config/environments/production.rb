@@ -120,7 +120,7 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :smtp
   host = 'app-vecindario.herokuapp.com' #replace with your own url
-  config.action_mailer.default_url_options = { :host => 'app-vecindario.herokuapp.com', protocol: 'http' }
+  config.action_mailer.default_url_options = { :host => host }
 
   # SMTP settings for gmail
   config.action_mailer.smtp_settings = {
